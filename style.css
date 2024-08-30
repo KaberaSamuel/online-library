@@ -5,7 +5,6 @@
   --redish: rgb(253, 52, 52);
 }
 
-  
 * {
   padding: 0;
   margin: 0;
@@ -15,7 +14,7 @@
 html {
   scroll-behavior: smooth;
 }
-  
+
 body {
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -24,7 +23,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* border: 2px solid red; */
 }
 
 h1 {
@@ -51,7 +49,7 @@ a {
   gap: 20px;
   padding: 0 25vw;
 }
-  
+
 .new-book-para {
   display: inline-block;
   padding: 10px 20px;
@@ -67,18 +65,18 @@ a {
 
 /* main related styles starts */
 main {
-  width: 90vw;
+  width: 80vw;
   margin: 30px auto;
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 25px;
   padding: 5px;
 }
 
 .book {
-  height: 18vw; 
-  border-radius: 5px;
+  height: 18vw;
+  border-radius: 10px;
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
   font-size: 1.1rem;
@@ -93,7 +91,6 @@ main {
 .middle {
   border-top: rgb(200, 200, 200) 1.5px solid;
   border-bottom: rgb(200, 200, 200) 1.5px solid;
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -110,7 +107,8 @@ main {
   justify-content: center;
 }
 
-.check-read, .delete {
+.check-read,
+.delete {
   color: white;
   padding: 7px 10px;
   border-radius: 7px;
@@ -118,7 +116,6 @@ main {
 
 .check-read {
   background-color: var(--light-black);
-
 }
 
 .delete {
@@ -127,7 +124,6 @@ main {
 
 footer {
   padding: 0 60px 20px;
-  /* border: green 2px solid; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,5 +143,5 @@ footer {
 }
 
 .tick-icon {
-  color:  var(--blueish);
+  color: var(--blueish);
 }

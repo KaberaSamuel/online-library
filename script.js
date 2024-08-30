@@ -5,18 +5,20 @@ function Book(title, author, read, pages) {
     (this.author = author),
     (this.isRead = read),
     (this.pages = pages);
+  this.htmlContent = createBookHtml(this);
 }
 
-const main = document.querySelector("main");
-const book1 = new Book("The Avengers", "Stan Lee", true, 665);
-// const book2 = new Book('Moon Knight', 'Ray Reynolds', false, 330)
-// const book3 = new Book('The secrets of Dumbledore', 'Zack-synder', true, 700);
+function createBookHtml(book) {
+  // 1. Creating a div element which be a container of book html content
+  const div = document.createElement("div");
+  div.setAttribute("class", "book");
+  if (div.isRead) {
+    div.classList.add("read");
+  } else {
+    div.classList.add("unread");
+  }
 
-myLibrary.push(book1);
-// myLibrary.push(book2)
-// myLibrary.push(book3)
-
-function generateIcon(book) {
+  // 2. creating first p html element which will icon regarding if book has been read or not
   const span = document.createElement("span");
   span.setAttribute("class", "material-symbols-outlined");
   if (book.isRead) {
@@ -29,32 +31,37 @@ function generateIcon(book) {
 
   const para = document.createElement("p");
   para.appendChild(span);
-  return para;
-}
+  para.insertAdjacentText("beforeend", "Read");
+  div.appendChild(para);
 
-for (let item of myLibrary) {
-  const div = document.createElement("div");
-  div.appendChild(generateIcon(item));
+  // 3. inserting remaining html content
   div.insertAdjacentHTML(
     "beforeend",
     `        
-        <div class="middle">
-          <p class="title">The Avengers</p>
-          <p class="author">stan lee</p>
-          <div>
-            <p class="check-read">Mark Unread</p>
-            <p class="delete">Delete Book</p>
-          </div>
+      <div class="middle">
+        <p class="title">${book.title}</p>
+        <p class="author">${book.author}</p>
+        <div>
+          <p class="check-read">Mark Unread</p>
+          <p class="delete">Delete Book</p>
         </div>
-        <p>5 pages</p>
-        `
+      </div>
+      <p>${book.pages} pages</p>
+    `
   );
 
-  if (item.isRead) {
-    div.classList.add("read");
-  } else {
-    div.classList.add("unread");
-  }
+  return div;
+}
 
-  main.appendChild(div);
+const main = document.querySelector("main");
+const book1 = new Book("The Avengers", "Stan lee", true, 665);
+const book2 = new Book("Alita Battle", "James Cameron", true, 444);
+const book3 = new Book("The avatar", "James Cameron", false, 1021);
+const book4 = new Book("Doctor Strange", "Kevin Fiege", true, 902);
+const book5 = new Book("Titanic", "James Cameron", false, 767);
+const book6 = new Book("The last airbender", "Richard Wenk", true, 1502);
+myLibrary.push(book1, book2, book3, book4, book5, book6);
+
+for (let item of myLibrary) {
+  main.appendChild(item.htmlContent);
 }
