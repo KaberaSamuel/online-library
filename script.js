@@ -1,3 +1,13 @@
+const newBook = document.querySelector("#new-book");
+const dialog = document.querySelector("dialog");
+const addBook = document.querySelector("#add-book");
+const cancelForm = document.querySelector("#cancel");
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+
+const pagesInput = document.querySelector("#pages");
+const checkbox = document.querySelector("input[type=checkbox]");
+
 const myLibrary = [];
 
 function Book(title, author, read, pages) {
@@ -53,6 +63,32 @@ function createBookHtml(book) {
   return div;
 }
 
+function updateUI() {
+  main.innerHTML = "";
+  for (let item of myLibrary) {
+    main.appendChild(item.htmlContent);
+  }
+}
+
+// modal functionalities
+cancelForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  dialog.close();
+});
+
+addBook.addEventListener("click", () => {
+  const book = new Book(
+    titleInput.value,
+    authorInput.value,
+    checkbox.checked,
+    pagesInput.value
+  );
+
+  myLibrary.push(book);
+  updateUI();
+  dialog.close();
+});
+
 const main = document.querySelector("main");
 const book1 = new Book("The Avengers", "Stan lee", true, 665);
 const book2 = new Book("Alita Battle", "James Cameron", true, 444);
@@ -62,6 +98,4 @@ const book5 = new Book("Titanic", "James Cameron", false, 767);
 const book6 = new Book("The last airbender", "Richard Wenk", true, 1502);
 myLibrary.push(book1, book2, book3, book4, book5, book6);
 
-for (let item of myLibrary) {
-  main.appendChild(item.htmlContent);
-}
+updateUI();

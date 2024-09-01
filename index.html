@@ -17,7 +17,7 @@
         Use the button below to add to your library and watch your collection
         grow.
       </p>
-      <p class="new-book-para">
+      <p id="new-book" onclick="dialog.showModal()">
         <span class="material-symbols-outlined"> note_stack_add </span> New Book
       </p>
     </section>
@@ -30,6 +30,31 @@
         <span class="material-symbols-outlined"> arrow_upward</span> Back to top
       </a>
     </footer>
+
+    <dialog>
+      <form>
+        <div>
+          <label>Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div>
+          <label>Author</label>
+          <input type="text" id="author" required />
+        </div>
+        <div>
+          <label>Pages</label>
+          <input type="number" id="pages" required />
+        </div>
+        <div>
+          <input type="checkbox" />
+          <p>Have you already read this book?</p>
+        </div>
+        <div>
+          <button id="cancel">Cancel</button>
+          <button id="add-book">Add Book</button>
+        </div>
+      </form>
+    </dialog>
 
     <!-- linking js file -->
     <script src="script.js"></script>
